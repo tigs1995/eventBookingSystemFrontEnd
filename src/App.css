@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css?family=Dosis:600');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300&display=swap');
+
+body{
+  margin-top: 50px;
+  margin: 80px;
+  background-color: #FCC12D;
+}
+
+h1{
+  font-family: 'Dosis', sans-serif;
+  width: 100%;
+  font-size: 100px;
+  text-align: center;
+  color: white;
+  margin-top: 100px;
+  letter-spacing: 10px;
+}
+
+p{
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  text-align: center;
+  font-weight: bold;
+}
+
+input{
+  width: 50%;
+  padding: 15px;
+  display: inline-block;
+  border-radius: 50px;
+  margin: 5px 0 20px 0;
+  height: 30px;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #FCC12D;
+  font-family: 'Montserrat', sans-serif;
+  font-style: bold;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: #FCC12D;
+  font-family: 'Montserrat', sans-serif;
+  font-style: bold;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: #FCC12D;
+  font-family: 'Montserrat', sans-serif;
+  font-style: bold;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: #FCC12D;
+  font-family: 'Montserrat', sans-serif;
+  font-style: bold;
+}
+
+button {
+  background-color: grey;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+  width: 50%;
+  border-radius: 50px;
+  height: 50px;
+  display: inline-block;
+}
+
+small{
+  color: red;
+}
+
+.social-media{
+  text-align: center;
+  margin-top: 25px;
+}
+
+.logo{
+  text-align: center;
+}
+
+
+form{
+  display: inline-block;
+  width: 60%;
+}
+
+
