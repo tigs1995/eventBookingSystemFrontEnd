@@ -21,7 +21,8 @@ class NewCustomer extends Component{
 
   validate = (event) => {
     event.preventDefault();
-    var validEmailRegex = /^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$/;
+    var validEmailRegex = new RegExp('^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$');
+    var validPhoneRegex = /((?:\\+|00)[17](?: |\\-)?|(?:\\+|00)[1-9]\\d{0,2}(?: |\\-)?|(?:\\+|00)1\\-\\d{3}(?: |\\-)?)?(0\\d|\\([0-9]{3}\\)|[1-9]{0,3})(?:((?: |\\-)[0-9]{2}){4}|((?:[0-9]{2}){4})|((?: |\\-)[0-9]{3}(?: |\\-)[0-9]{4})|([0-9]{7}))/;
     const { name, value } = event.target;
     let errors = this.state.errors;
 
@@ -34,6 +35,9 @@ class NewCustomer extends Component{
         break;
       case 'email':
         errors.errorEmail = validEmailRegex.test(value) ? '' : 'Email invalid.';
+        break;
+      case 'phone':
+        errors.errorPhone = validPhoneRegex.test(value) ? '' : 'Phone invalid.';
         break;
         default:
           break;
@@ -59,10 +63,11 @@ class NewCustomer extends Component{
           <input type="text" placeholder="Second Name" name="second-name" onChange={this.validate} required></input>
           <span className='error'>{errors.errorLastName}</span>          
           <br />
-          <input type="text" placeholder="Email" name="email" onChange={this.validateEmail} required></input>
+          <input type="text" placeholder="Email" name="email" onChange={this.validate} required></input>
           <span className='error'>{errors.errorEmail}</span> 
           <br />
-          <input type="text" placeholder="Phone" name="phone" onChange={this.validatePhone} required></input>
+          <input type="text" placeholder="Phone" name="phone" onChange={this.validate} required></input>
+          <span className='error'>{errors.errorPhone}</span> 
           <br />
           <button disabled={this.state.disabled} onClick={this.onSubmitClick}>Submit</button>
         </form>

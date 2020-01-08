@@ -34,6 +34,10 @@ input{
   height: 30px;
 }
 
+.error{
+  color: red;
+}
+
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   color: #FCC12D;
   font-family: 'Montserrat', sans-serif;
@@ -85,6 +89,8 @@ small{
 form{
   display: inline-block;
   width: 60%;
+  text-align: center;
+
 }
 
 
