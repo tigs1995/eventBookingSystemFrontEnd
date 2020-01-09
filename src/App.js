@@ -22,7 +22,7 @@ class App extends Component{
             <Route exact path="/" component={Home} />
             <Route path="/existingcustomer" component={ExistingCust} />
             <Route path="/newcustomer" component={NewCustomer} />
-            <Route path="/event" component={Event} />
+            <Route path="/event/:custid" component={Event} />
             <Route path="/thankyou" component={ThankYou} />
             <Route component={NoMatch} />
           </Switch>
