@@ -30,8 +30,8 @@ input{
   padding: 15px;
   display: inline-block;
   border-radius: 50px;
-  margin: 5px 0 20px 0;
-  height: 30px;
+  margin: 5px 0 0px 0;
+  height: 50px;
 }
 
 .error{
@@ -88,9 +88,12 @@ small{
 
 form{
   display: inline-block;
-  width: 60%;
+  width: 100%;
   text-align: center;
-
+  margin: 0 auto;
 }
 
+span{
+  display: block;
+}
 

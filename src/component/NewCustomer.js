@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { render } from '@testing-library/react';
 
-class NewCustomer extends Component{
+export default class NewCustomer extends Component{
   constructor(props){
   super(props);
   this.state = {
@@ -10,28 +10,28 @@ class NewCustomer extends Component{
     email: null,
     phone: null,
     errors: {
-      errorFirstName: '',
-      errorLastName: '',
-      errorEmail: '',
-      errorPhone: '',
+      errorFirstName: ' ',
+      errorLastName: ' ',
+      errorEmail: ' ',
+      errorPhone: ' ',
+      errorSubmit: ' '
     },
-    disabled: true
   }
 }
 
   validate = (event) => {
     event.preventDefault();
     var validEmailRegex = new RegExp('^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$');
-    var validPhoneRegex = /((?:\\+|00)[17](?: |\\-)?|(?:\\+|00)[1-9]\\d{0,2}(?: |\\-)?|(?:\\+|00)1\\-\\d{3}(?: |\\-)?)?(0\\d|\\([0-9]{3}\\)|[1-9]{0,3})(?:((?: |\\-)[0-9]{2}){4}|((?:[0-9]{2}){4})|((?: |\\-)[0-9]{3}(?: |\\-)[0-9]{4})|([0-9]{7}))/;
+    var validPhoneRegex = /^(((\+44\s?\d{4}|\(?0\d{4}\)?)\s?\d{3}\s?\d{3})|((\+44\s?\d{3}|\(?0\d{3}\)?)\s?\d{3}\s?\d{4})|((\+44\s?\d{2}|\(?0\d{2}\)?)\s?\d{4}\s?\d{4}))(\s?\#(\d{4}|\d{3}))?$/;
     const { name, value } = event.target;
     let errors = this.state.errors;
 
     switch(name){
       case 'first-name':
-        errors.errorFirstName = value.length > 6 ? 'First name too long.' : '';
+        errors.errorFirstName = value.length < 6 ? '' : 'First name too long.';
         break;
       case 'second-name':
-        errors.errorLastName = value.length > 6 ? 'Last name too long.' : '';
+        errors.errorLastName = value.length < 6  ? '' : 'Last name too long.';
         break;
       case 'email':
         errors.errorEmail = validEmailRegex.test(value) ? '' : 'Email invalid.';
@@ -42,21 +42,23 @@ class NewCustomer extends Component{
         default:
           break;
     }
+
     this.setState({errors, [name]: value}, ()=> { 
-      console.log(errors)
     })
-  }
+    }
 
   onSubmitClick = (event) => {
     event.preventDefault();
-    window.location.pathname = './ExistingCustomer';
+    window.location.pathname = './Event';
   }
+
 
   render(){
     const {errors} = this.state;
+    const disabled = errors.errorFirstName || errors.errorLastName || errors.errorEmail || errors.errorPhone;
     return (
       <div>
-        <form>
+        <form onSubmit={this.onSubmitClick}>
           <input type="text" placeholder="First Name" name="first-name" onChange={this.validate} required></input>
           <span className='error'>{errors.errorFirstName}</span>        
           <br />
@@ -69,11 +71,10 @@ class NewCustomer extends Component{
           <input type="text" placeholder="Phone" name="phone" onChange={this.validate} required></input>
           <span className='error'>{errors.errorPhone}</span> 
           <br />
-          <button disabled={this.state.disabled} onClick={this.onSubmitClick}>Submit</button>
+          <button disabled={disabled ? 'disabled' : ''}>Submit</button>
         </form>
       </div>
     );
   }
 }
-export default (NewCustomer);
 
