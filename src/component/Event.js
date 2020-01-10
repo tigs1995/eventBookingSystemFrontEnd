@@ -42,7 +42,6 @@ export default class Event extends Component{
     }
 
   onSubmitClick = (event) => {
-    debugger;
     event.preventDefault();
     this.setState({ postcode: this.postcodeInp.value});
     this.setState({ capacity: this.capacityInp.value});

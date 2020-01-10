@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { BASE_URL, CHECK_EXISTING_URL, DELETE_URL } from '../Constants';
+import { BASE_URL, CHECK_EXISTING_URL, DELETE_CUST_URL } from '../Constants';
 
 
 export default class DeleteCustomer extends Component{
@@ -45,7 +45,7 @@ export default class DeleteCustomer extends Component{
         this.setState({ errorMessage: "Customer ID not found." });
       } 
       else {
-        axios.delete(`${BASE_URL}${DELETE_URL}${this.state.custReference}`).then(response => {
+        axios.delete(`${BASE_URL}${DELETE_CUST_URL}${this.state.custReference}`).then(response => {
             console.log(response)})
         .catch(error => {
         console.warn(error);
@@ -60,7 +60,7 @@ export default class DeleteCustomer extends Component{
       <div>
         <h2>ADMIN VIEW</h2>
         <input type="long" placeholder="Enter customer number to delete." name="custToDelete" onChange={this.validation} required></input>
-        <button disabled={this.state.disabled} onClick={this.onSubmitClick}>Submit</button>
+        <button disabled={this.state.disabled} onClick={this.onSubmitClick}>Delete Customer</button>
         {this.state.errorMessage}
         <br />
       </div>
