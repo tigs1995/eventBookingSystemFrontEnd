@@ -1,19 +1,18 @@
 import React, { Component } from 'react';
-import { render } from '@testing-library/react';
 import axios from 'axios';
-import Event from './Event';
-import { BASE_URL, CHECK_EXISTING_URL } from './Constants';
+import { BASE_URL, CHECK_EXISTING_URL, DELETE_URL } from '../Constants';
 
-class ExistingCustomer extends Component{
-  
-  constructor(props){
-    super(props);
-    this.state = {
-      custReference: 0,
-      errorMessage: '',
-      disabled: true
-  }
-  }
+
+export default class DeleteCustomer extends Component{
+
+    constructor(props){
+        super(props);
+        this.state = {
+          custReference: 0,
+          errorMessage: '',
+          disabled: true
+      }
+      }
 
   validation = (event) => {
     let custRef = event.target.value;
@@ -46,33 +45,25 @@ class ExistingCustomer extends Component{
         this.setState({ errorMessage: "Customer ID not found." });
       } 
       else {
-        this.props.history.push(`Event/${this.state.custReference}`);
-    }}).catch(err => {
-      console.error(err);
-      this.setState({ errorMessage: err});
-    })
+        axios.delete(`${BASE_URL}${DELETE_URL}${this.state.custReference}`).then(response => {
+            console.log(response)})
+        .catch(error => {
+        console.warn(error);
+        this.setState({ errorMessage: error.message })
+        })
     }
-
-  onBackClick = (event) => {
-    event.preventDefault();
-    window.location.pathname = './';
+})
   }
 
   render(){
     return (
       <div>
-      <form>
-        <input type="long" placeholder="Customer Ref Number" name="cust-ref" onChange={this.validation} required></input>
-        <br />
+        <h2>ADMIN VIEW</h2>
+        <input type="long" placeholder="Enter customer number to delete." name="custToDelete" onChange={this.validation} required></input>
         <button disabled={this.state.disabled} onClick={this.onSubmitClick}>Submit</button>
         {this.state.errorMessage}
         <br />
-        <button onClick={this.onBackClick}>Back</button>
-      </form>
       </div>
-    );
-  }
+    )
+    }
 }
-
-export default (ExistingCustomer);
-

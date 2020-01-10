@@ -13,12 +13,20 @@ class Home extends Component{
     window.location.pathname = './NewCustomer';
   }
 
+  adminClicked = (event) => {
+    event.preventDefault();
+    
+    window.location.pathname = './AdminPassword';
+  }
+
   render(){
     return (
       <div>
         <p>Do You have a customer reference number?</p>
         <button type='yes' onClick={this.yesClicked}>Yes</button>
         <button onClick={this.noClicked}>No</button>
+        <br />
+        <button onClick={this.adminClicked}>Admin</button>
       </div>
     );
   }

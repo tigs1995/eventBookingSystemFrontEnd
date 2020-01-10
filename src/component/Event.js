@@ -9,9 +9,9 @@ export default class Event extends Component{
     super(props);
     this.state = {
       custid: null,
-      postcode: null,
-      capacity: null,
-      date: null,
+      eventPostcode: null,
+      eventCapacity: null,
+      eventDate: null,
       errors: {
         errorPostcode: '',
         errorCapacity: '',
@@ -27,11 +27,11 @@ export default class Event extends Component{
     let errors = this.state.errors;
 
     switch(name){
-      case 'postcode':
-        errors.errorPostcode = validPostcodeRegex.test(value) ? '' : 'Postcode invalid.';
+      case 'eventPostcode':
+        errors.errorPostcode = validPostcodeRegex.test(value) || value == "" ? '' : 'Postcode invalid.';
         break;
-      case 'capacity':
-        errors.errorCapacity = !Number(value) || value < 1 || value > 5000 ? 'Invalid format. Numbers only. Max capacity of 5,000.' : '';
+      case 'eventCapacity':
+        errors.errorCapacity = Number(value) && value > 1 && value < 5001 || value == "" ? '' : 'Invalid format. Numbers only. Max capacity of 5,000.';
         break;
         default:
           break;
@@ -42,14 +42,12 @@ export default class Event extends Component{
     }
 
   onSubmitClick = (event) => {
-    const postcode = document.getElementsByName("postcode").value;
-    const capacity = document.getElementsByName("capacity").value;
-    const date = document.getElementsByName("date").value;
+    debugger;
     event.preventDefault();
     this.setState({ postcode: this.postcodeInp.value});
     this.setState({ capacity: this.capacityInp.value});
     this.setState({ date: this.dateInp.value});
-    axios.post(`${BASE_URL}${POST_EVENT_URL}${this.state.custid}`, { eventPostcode: this.state.postcode, eventCapacity: this.state.capacity, eventDate: this.state.date })
+    axios.post(`${BASE_URL}${POST_EVENT_URL}${this.state.custid}`, { eventPostcode: this.state.eventPostcode, eventCapacity: this.state.eventCapacity, eventDate: this.state.eventDate })
     .then(response => {console.log(response)})
     .catch(error => {
       console.warn(error);
@@ -69,18 +67,18 @@ export default class Event extends Component{
       <div>
         <p>Customer Reference: {this.state.custid}</p>
         <form onSubmit={this.onSubmitClick}>
-          <input type="date" placeholder="Date" name="date" value="2020-02-10" onChange={this.validate} ref={input => this.dateInp = input} required></input>
+          <input type="date" placeholder="Date" name="eventDate" value="2020-02-10" onChange={this.validate} ref={input => this.dateInp = input} required></input>
           <br />
-          <input type="text" placeholder="Postcode" name="postcode" onChange={this.validate} ref={input => this.postcodeInp = input} required></input>
+          <input type="text" placeholder="Postcode" name="eventPostcode" onChange={this.validate} ref={input => this.postcodeInp = input} required></input>
           <span className='error'>{errors.errorPostcode}</span>
           <br />
-          <input type="text" placeholder="Capacity" name="capacity" onChange={this.validate} ref={input => this.capacityInp = input} required></input>
+          <input type="text" placeholder="Capacity" name="eventCapacity" onChange={this.validate} ref={input => this.capacityInp = input} required></input>
           <span className='error'>{errors.errorCapacity}</span>
           <br />
           <p>If your event is more than one day, please select a day for your event that is available.</p>
           <button disabled={disabled ? 'disabled' : ''}>Submit</button>
         </form>
       </div>
-    )
+    );
     }
 }

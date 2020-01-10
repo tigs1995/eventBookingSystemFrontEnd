@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
-import { render } from '@testing-library/react';
+import axios from 'axios';
+import { BASE_URL, POST_GET_CUST_URL } from './Constants';
+
 
 export default class NewCustomer extends Component{
+
   constructor(props){
   super(props);
   this.state = {
+    custid: null,
     firstName: null,
     lastName: null,
     email: null,
@@ -27,17 +31,17 @@ export default class NewCustomer extends Component{
     let errors = this.state.errors;
 
     switch(name){
-      case 'first-name':
+      case 'firstName':
         errors.errorFirstName = value.length < 6 ? '' : 'First name too long.';
         break;
-      case 'second-name':
+      case 'lastName':
         errors.errorLastName = value.length < 6  ? '' : 'Last name too long.';
         break;
       case 'email':
-        errors.errorEmail = validEmailRegex.test(value) ? '' : 'Email invalid.';
+        errors.errorEmail = validEmailRegex.test(value) || value == "" ? '' : 'Email invalid.';
         break;
       case 'phone':
-        errors.errorPhone = validPhoneRegex.test(value) ? '' : 'Phone invalid.';
+        errors.errorPhone = validPhoneRegex.test(value) || value == "" ? '' : 'Phone invalid.';
         break;
         default:
           break;
@@ -47,11 +51,21 @@ export default class NewCustomer extends Component{
     })
     }
 
-  onSubmitClick = (event) => {
-    event.preventDefault();
-    window.location.pathname = './Event';
-  }
-
+    onSubmitClick = (event) => {
+      event.preventDefault();
+      this.setState({ firstName: this.firstNameInp.value});
+      this.setState({ lastName: this.lastNameInp.value});
+      this.setState({ email: this.emailInp.value});
+      this.setState({ phone: this.phoneInp.value});
+      axios.post(`${BASE_URL}${POST_GET_CUST_URL}`, { firstName: this.state.firstName, lastName: this.state.lastName, email: this.state.email, phone: this.state.phone })
+      .then(response => { 
+              this.props.history.push(`Event/${response.data}`);  
+      })
+      .catch(error => {
+        console.log(error);
+        this.setState({ err: error.message })
+      })
+    }
 
   render(){
     const {errors} = this.state;
@@ -59,22 +73,23 @@ export default class NewCustomer extends Component{
     return (
       <div>
         <form onSubmit={this.onSubmitClick}>
-          <input type="text" placeholder="First Name" name="first-name" onChange={this.validate} required></input>
+          <input type="text" placeholder="First Name" name="firstName" onChange={this.validate} ref={input => this.firstNameInp = input} required></input>
           <span className='error'>{errors.errorFirstName}</span>        
           <br />
-          <input type="text" placeholder="Second Name" name="second-name" onChange={this.validate} required></input>
+          <input type="text" placeholder="Second Name" name="lastName" onChange={this.validate} ref={input => this.lastNameInp = input} required></input>
           <span className='error'>{errors.errorLastName}</span>          
           <br />
-          <input type="text" placeholder="Email" name="email" onChange={this.validate} required></input>
+          <input type="text" placeholder="Email" name="email" onChange={this.validate} ref={input => this.emailInp = input} required></input>
           <span className='error'>{errors.errorEmail}</span> 
           <br />
-          <input type="text" placeholder="Phone" name="phone" onChange={this.validate} required></input>
+          <input type="text" placeholder="Phone" name="phone" onChange={this.validate} ref={input => this.phoneInp = input} required></input>
           <span className='error'>{errors.errorPhone}</span> 
           <br />
           <button disabled={disabled ? 'disabled' : ''}>Submit</button>
+          <span className='error'>{errors.errorSubmit}</span>
         </form>
       </div>
-    );
+    )
   }
 }
 
