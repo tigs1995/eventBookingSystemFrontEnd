@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { render } from '@testing-library/react';
 import axios from 'axios';
 import Event from './Event';
-import { BASE_URL, CHECK_EXISTING_URL } from './Constants';
+import { BASE_URL, CHECK_EXISTING_CUST_URL } from './Constants';
 
 class ExistingCustomer extends Component{
   
@@ -38,7 +38,7 @@ class ExistingCustomer extends Component{
 
   onSubmitClick = (event) => {
     event.preventDefault();
-    axios.get(`${BASE_URL}${CHECK_EXISTING_URL}${this.state.custReference}`).then(response => {
+    axios.get(`${BASE_URL}${CHECK_EXISTING_CUST_URL}${this.state.custReference}`).then(response => {
       if (response.data.Error) {
         this.setState({ errorMessage: response.dataError });
       }

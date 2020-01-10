@@ -1,32 +1,76 @@
 import React, { Component } from 'react';
-import { BASE_URL, POST_GET_CUST_URL} from '../Constants';
+import { render } from '@testing-library/react';
 import axios from 'axios';
+import { BASE_URL, CHECK_EXISTING_EVENT_URL } from '../Constants';
 
-export default class EditEvent extends Component{
+class UpdateEvent extends Component{
+  
+  constructor(props){
+    super(props);
+    this.state = {
+      eventReference: 0,
+      errorMessage: '',
+      disabled: true
+  }
+  }
 
-    // showCustomers() {
-    //     axios.get(`${BASE_URL}${POST_GET_CUST_URL }`).then(data => {
-    //         for (let customer of data) {
-    //             const listElement = document.createElement("li");
-    //             listElement.value = data.email;
-    //             listElement.innerHTML = customer.firstName + " " + customer.lastName + " " + customer.email + " " + customer.phone;
-    //             document.getElementsByClassName("listGroup").appendChild(listElement);
-    //         }
-    //     });
-    // }
+  validation = (event) => {
+    let eventRef = event.target.value;
+    let err = '';
+    event.preventDefault();
+    this.setState({eventReference: 0});
+    
+    if (eventRef == ""){
+      err = '';
+      this.setState({disabled: true});
+    }
+    else if (!Number(eventRef)){
+      err = <small>Your event reference must be a number greater than 0.</small>
+      this.setState({disabled: true});
+    }
+    else {
+      this.setState({eventReference: eventRef});
+      this.setState({disabled: false});
+    }
+    this.setState({errorMessage: err});
+  }
 
-    // componentDidMount(props) {
-    //     this.showCustomers();
-    //   }
+  onSubmitClick = (event) => {
+    event.preventDefault();
+    axios.get(`${BASE_URL}${CHECK_EXISTING_EVENT_URL}${this.state.eventReference}`).then(response => {
+      if (response.data.Error) {
+        this.setState({ errorMessage: response.dataError });
+      }
+      else if (response.data == false) {
+        this.setState({ errorMessage: "Event ID not found." });
+      } 
+      else {
+        this.props.history.push(`UpdateEventID/${this.state.eventReference}`);
+    }}).catch(err => {
+      console.error(err);
+      this.setState({ errorMessage: err});
+    })
+    }
 
-    render(){
-        return (
-          <div>
-            <h2>ADMIN VIEW</h2> 
-            <ul name="listGroup">
-                <h2>Customers</h2>
-            </ul>
-          </div>
-        )
-        }
+  onBackClick = (event) => {
+    event.preventDefault();
+    window.location.pathname = './Admin';
+  }
+
+  render(){
+    return (
+      <div>
+      <form>
+        <input type="long" placeholder="Event Ref Number" name="event-ref" onChange={this.validation} required></input>
+        <br />
+        <button disabled={this.state.disabled} onClick={this.onSubmitClick}>Submit</button>
+        {this.state.errorMessage}
+        <br />
+        <button onClick={this.onBackClick}>Back</button>
+      </form>
+      </div>
+    );
+  }
 }
+
+export default (UpdateEvent);

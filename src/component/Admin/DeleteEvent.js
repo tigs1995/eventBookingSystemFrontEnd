@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { BASE_URL, CHECK_EXISTING_URL, DELETE_EVENT_URL } from '../Constants';
+import { BASE_URL, CHECK_EXISTING_EVENT_URL, PUT_DELETE_EVENT_URL } from '../Constants';
 
 
 export default class DeleteCustomer extends Component{
@@ -10,6 +10,7 @@ export default class DeleteCustomer extends Component{
         this.state = {
           eventReference: 0,
           errorMessage: '',
+          completeMessage: '', 
           disabled: true
       }
       }
@@ -37,7 +38,7 @@ export default class DeleteCustomer extends Component{
 
   onSubmitClick = (event) => {
     event.preventDefault();
-    axios.get(`${BASE_URL}${CHECK_EXISTING_URL}${this.state.eventReference}`).then(response => {
+    axios.get(`${BASE_URL}${CHECK_EXISTING_EVENT_URL}${this.state.eventReference}`).then(response => {
       if (response.data.Error) {
         this.setState({ errorMessage: response.dataError });
       }
@@ -45,12 +46,13 @@ export default class DeleteCustomer extends Component{
         this.setState({ errorMessage: "Event ID not found." });
       } 
       else {
-        axios.delete(`${BASE_URL}${DELETE_EVENT_URL}${this.state.eventReference}`).then(response => {
+        axios.delete(`${BASE_URL}${PUT_DELETE_EVENT_URL}${this.state.eventReference}`).then(response => {
             console.log(response)})
         .catch(error => {
         console.warn(error);
         this.setState({ errorMessage: error.message })
         })
+        this.setState({completeMessage: "Event number " + (this.state.eventReference) + " was deleted."})
     }
 })
   }

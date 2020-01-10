@@ -3,6 +3,15 @@ import axios from 'axios';
 
 export default class Event extends Component{
 
+  viewCusts = (event) => {
+    event.preventDefault();
+    window.location.pathname = './ViewCusts';
+  }
+
+  viewEvents = (event) => {
+    event.preventDefault();
+    window.location.pathname = './ViewEvents';
+  }
   
   updateCust = (event) => {
     event.preventDefault();
@@ -31,9 +40,9 @@ export default class Event extends Component{
         <h2>ADMIN VIEW</h2>
         <h3>Customers</h3>
         <h3>Events</h3>
-        <button onClick={this.viewCust}>View Customer</button>
+        <button onClick={this.viewCusts}>View Customers</button>
         <br />
-        <button onClick={this.viewEvent}>View Event</button>
+        <button onClick={this.viewEvents}>View Events</button>
         <br />
         <button onClick={this.deleteCust}>Delete Customer</button>
         <br />

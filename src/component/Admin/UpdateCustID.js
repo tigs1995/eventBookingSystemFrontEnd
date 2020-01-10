@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { BASE_URL, POST_GET_CUST_URL } from './Constants';
+import { BASE_URL, PUT_DELETE_CUST_URL} from '../Constants';
 
-
-export default class NewCustomer extends Component{
+export default class UpdateCustID extends Component{
 
   constructor(props){
   super(props);
@@ -18,10 +17,14 @@ export default class NewCustomer extends Component{
       errorLastName: ' ',
       errorEmail: ' ',
       errorPhone: ' ',
-      errorSubmit: ' '
+      err: ' ',
     },
   }
 }
+
+componentDidMount(props) {
+    this.setState({custid: this.props.match.params.custid})
+  }
 
   validate = (event) => {
     event.preventDefault();
@@ -57,21 +60,27 @@ export default class NewCustomer extends Component{
       this.setState({ lastName: this.lastNameInp.value});
       this.setState({ email: this.emailInp.value});
       this.setState({ phone: this.phoneInp.value});
-      axios.post(`${BASE_URL}${POST_GET_CUST_URL}`, { firstName: this.state.firstName, lastName: this.state.lastName, email: this.state.email, phone: this.state.phone })
-      .then(response => { 
-              this.props.history.push(`Event/${response.data}`);  
-      })
+      axios.put(`${BASE_URL}${PUT_DELETE_CUST_URL}${this.state.custid}`, { firstName: this.state.firstName, lastName: this.state.lastName, email: this.state.email, phone: this.state.phone })
+      .then(response => {console.log(response)})
       .catch(error => {
         console.log(error);
         this.setState({ err: error.message })
       })
+      alert("Customer updated successfully.");
+      window.location.pathname = './Admin';
     }
+
+    onBackClick = (event) => {
+        event.preventDefault();
+        window.location.pathname = './UpdateCust';
+      }
 
   render(){
     const {errors} = this.state;
     const disabled = errors.errorFirstName || errors.errorLastName || errors.errorEmail || errors.errorPhone;
     return (
       <div>
+        <p>Event Reference: {this.state.custid}</p>
         <form onSubmit={this.onSubmitClick}>
           <input type="text" placeholder="First Name" name="firstName" onChange={this.validate} ref={input => this.firstNameInp = input} required></input>
           <span className='error'>{errors.errorFirstName}</span>        
@@ -86,10 +95,10 @@ export default class NewCustomer extends Component{
           <span className='error'>{errors.errorPhone}</span> 
           <br />
           <button disabled={disabled ? 'disabled' : ''}>Submit</button>
-          <span className='error'>{errors.errorSubmit}</span>
+          <br />
+            <button onClick={this.onBackClick}>Back</button>
         </form>
       </div>
     )
   }
 }
-
