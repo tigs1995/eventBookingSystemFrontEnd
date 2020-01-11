@@ -102,3 +102,26 @@ span{
   display: block;
 }
 
+.scrollbox{
+  overflow-y: scroll;
+  height: 500px;
+  width: 50%;
+  padding: 1rem;
+  margin: 0 auto;
+  border-color: white;
+  border-style: solid;
+  border-radius: 5%;
+}
+
+.customerdetails{
+  background-color: #FCC12D;
+  color: white;
+  border-bottom: white;
+  border-bottom: solid;
+  border-top: transparent;
+  border-left: transparent;
+  border-right: transparent;
+}
+
+
+
