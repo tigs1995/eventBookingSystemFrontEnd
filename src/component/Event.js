@@ -52,7 +52,7 @@ export default class Event extends Component{
     event.preventDefault();
     this.setState({ postcode: this.postcodeInp.value});
     this.setState({ capacity: this.capacityInp.value});
-    this.setState({ date: this.dateInp.value});
+    this.setState({ eventDate: this.dateInp.value});
     axios.post(`${BASE_URL}${POST_EVENT_URL}${this.state.custid}`, { eventPostcode: this.state.eventPostcode, eventCapacity: this.state.eventCapacity, eventDate: this.state.eventDate })
     .then(response => {console.log(response)})
     .catch(error => {
@@ -96,7 +96,6 @@ export default class Event extends Component{
           <small>If your event is more than one day, please select a day for your event that is available.</small>
           <br />
           <input type="date" placeholder="Date" name="eventDate" value={this.state.todayDate} min={this.state.todayDate} max={this.state.maxDate} onChange={this.validate} ref={input => this.dateInp = input} required></input>
-          <span></span>
           <br />
           <button disabled={disabled ? 'disabled' : ''}>Submit</button>
         </form>
