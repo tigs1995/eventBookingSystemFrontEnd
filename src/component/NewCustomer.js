@@ -13,12 +13,12 @@ export default class NewCustomer extends Component{
     lastName: null,
     email: null,
     phone: null,
+    err: '',
     errors: {
       errorFirstName: ' ',
       errorLastName: ' ',
       errorEmail: ' ',
       errorPhone: ' ',
-      errorSubmit: ' '
     },
   }
 }
@@ -86,7 +86,6 @@ export default class NewCustomer extends Component{
           <span className='error'>{errors.errorPhone}</span> 
           <br />
           <button disabled={disabled ? 'disabled' : ''}>Submit</button>
-          <span className='error'>{errors.errorSubmit}</span>
         </form>
       </div>
     )

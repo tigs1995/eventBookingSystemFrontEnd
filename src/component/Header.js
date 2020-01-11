@@ -10,7 +10,7 @@ export default class Header extends Component {
     render(){
         return (
             <div>
-                <button onClick={this.homeClicked}>Home</button>
+                <button className='homebutton' onClick={this.homeClicked}>Home</button>
                 <h1>BOOK AN EVENT</h1>
             </div>
         );

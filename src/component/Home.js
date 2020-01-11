@@ -22,11 +22,13 @@ class Home extends Component{
   render(){
     return (
       <div>
-        <p>Do You have a customer reference number?</p>
+        <p>Do you have a customer reference number?</p>
+        <form>
         <button type='yes' onClick={this.yesClicked}>Yes</button>
         <button onClick={this.noClicked}>No</button>
         <br />
-        <button onClick={this.adminClicked}>Admin</button>
+        <button className='homebutton' onClick={this.adminClicked}>Admin</button>
+        </form>
       </div>
     );
   }
