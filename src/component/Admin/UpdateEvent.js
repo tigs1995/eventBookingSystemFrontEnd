@@ -25,7 +25,7 @@ class UpdateEvent extends Component{
       this.setState({disabled: true});
     }
     else if (!Number(eventRef)){
-      err = <small>Your event reference must be a number greater than 0.</small>
+      err = "Your event reference must be a number greater than 0.";
       this.setState({disabled: true});
     }
     else {
@@ -60,12 +60,13 @@ class UpdateEvent extends Component{
   render(){
     return (
       <div>
+        <h3 className="admin">ADMIN VIEW</h3>
+        <br/>
       <form>
         <input type="long" placeholder="Event Ref Number" name="event-ref" onChange={this.validation} required></input>
         <br />
         <button disabled={this.state.disabled} onClick={this.onSubmitClick}>Submit</button>
-        {this.state.errorMessage}
-        <br />
+        <span className='error'>{this.state.errorMessage}</span> 
         <button onClick={this.onBackClick}>Back</button>
       </form>
       </div>

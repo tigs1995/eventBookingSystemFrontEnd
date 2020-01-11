@@ -37,20 +37,34 @@ export default class Event extends Component{
   render(){
     return (
       <div>
-        <h2>ADMIN VIEW</h2>
-        <h3>Customers</h3>
-        <h3>Events</h3>
-        <button onClick={this.viewCusts}>View Customers</button>
-        <br />
-        <button onClick={this.viewEvents}>View Events</button>
-        <br />
-        <button onClick={this.deleteCust}>Delete Customer</button>
-        <br />
-        <button onClick={this.deleteEvent}>Delete Event</button>
-        <br />
-        <button onClick={this.updateCust}>Update Customer</button>
-        <br />
-        <button onClick={this.updateEvent}>Update Event</button>
+        <h3 className="admin">ADMIN VIEW</h3>
+        <br/>
+        <table>
+          <thead>
+            <tr>
+              <th>
+                <h3>Customers</h3>
+              </th>
+              <th>
+                <h3>Events</h3>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><button onClick={this.viewCusts}>View Customers</button></td>
+              <td><button onClick={this.viewEvents}>View Events</button></td>
+            </tr>
+            <tr>
+              <td><button onClick={this.deleteCust}>Delete Customer</button></td>
+              <td><button onClick={this.deleteEvent}>Delete Event</button></td>
+            </tr>
+            <tr>
+              <td><button onClick={this.updateCust}>Update Customer</button></td>
+              <td><button onClick={this.updateEvent}>Update Event</button></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     )
     }

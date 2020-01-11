@@ -23,10 +23,7 @@ export default class AdminPassword extends Component{
     }
     }
 
-  onBackClick = (event) => {
-    event.preventDefault();
-    window.location.pathname = './';
-  }
+ 
 
   render(){
     return (
@@ -37,9 +34,7 @@ export default class AdminPassword extends Component{
         <span className='error'>{this.state.errorMessage}</span>        
         <br />
         <button onClick={this.onSubmitClick}>Submit</button>
-        <br />
-        <button onClick={this.onBackClick}>Back</button>
-      </form>
+        </form>
       </div>
     );
   }

@@ -80,7 +80,7 @@ componentDidMount(props) {
     const disabled = errors.errorFirstName || errors.errorLastName || errors.errorEmail || errors.errorPhone;
     return (
       <div>
-        <p>Event Reference: {this.state.custid}</p>
+        <p>Customer Reference: {this.state.custid}</p>
         <form onSubmit={this.onSubmitClick}>
           <input type="text" placeholder="First Name" name="firstName" onChange={this.validate} ref={input => this.firstNameInp = input} required></input>
           <span className='error'>{errors.errorFirstName}</span>        
