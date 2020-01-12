@@ -13,7 +13,6 @@ export default class UpdateEventID extends Component{
       eventDate: null,
       todayDate: null,
       maxDate: null,
-      completeMessage: '',
       err: '',
       errors: {
         errorPostcode: '',
@@ -25,7 +24,7 @@ export default class UpdateEventID extends Component{
   }
 
   componentDidMount(props) {
-    this.setState({eventid: this.props.match.params.eventid});
+    this.setState({custid: this.props.match.params.custid});
     var todaysDate = new Date();
     var day = todaysDate.getDate();
     var month = todaysDate.getMonth() + 1;
@@ -43,7 +42,6 @@ export default class UpdateEventID extends Component{
 
   validate = (event) => {
     event.preventDefault();
-    this.setState({completeMessage: ''})
     var validPostcodeRegex = /^[A-Za-z]{1,2}[0-9Rr][0-9A-Za-z]? ?[0-9][AaBbD-Hd-hJjLlNnP-Up-uW-Zw-z]{2}$/;
     const { name, value } = event.target;
     let errors = this.state.errors;
@@ -77,12 +75,13 @@ export default class UpdateEventID extends Component{
       console.warn(error);
       this.setState({ err: error.message })
     })
-    this.setState({completeMessage: "Event number " + (this.state.eventid) + " was updated."})
+    alert("Event updated successfully.");
+    window.location.pathname = './Admin';  
 }
 
 onBackClick = (event) => {
     event.preventDefault();
-    window.location.pathname = './Admin';
+    window.location.pathname = './UpdateEvent';
   }
 
   render(){
@@ -105,8 +104,7 @@ onBackClick = (event) => {
           <br />
           <button disabled={disabled ? 'disabled' : ''}>Submit</button>
         <br />
-        <button onClick={this.onBackClick}>Admin Home</button>    
-        <span className='completemessage'>{this.state.completeMessage}</span>
+        <button onClick={this.onBackClick}>Back</button>    
         </form>
       </div>
     )

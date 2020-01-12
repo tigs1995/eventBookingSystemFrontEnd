@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { render } from '@testing-library/react';
 
 class Home extends Component{
 
@@ -23,8 +24,8 @@ class Home extends Component{
       <div>
         <p>Do you have a customer reference number?</p>
         <form>
-        <button id="yesButton" onClick={this.yesClicked}>Yes</button>
-        <button if="noButton" onClick={this.noClicked}>No</button>
+        <button type='yes' onClick={this.yesClicked}>Yes</button>
+        <button onClick={this.noClicked}>No</button>
         <br />
         <button className='homebutton' onClick={this.adminClicked}>Admin</button>
         </form>
