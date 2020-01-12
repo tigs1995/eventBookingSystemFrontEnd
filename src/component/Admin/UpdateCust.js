@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { render } from '@testing-library/react';
 import axios from 'axios';
-import Event from './Event';
-import { BASE_URL, CHECK_EXISTING_CUST_URL } from './Constants';
+import UpdateCustID from './UpdateCustID';
+import { BASE_URL, CHECK_EXISTING_CUST_URL } from '../Constants';
 
-class ExistingCustomer extends Component{
+class UpdateCust extends Component{
   
   constructor(props){
     super(props);
@@ -46,7 +46,7 @@ class ExistingCustomer extends Component{
         this.setState({ errorMessage: "Customer ID not found." });
       } 
       else {
-        this.props.history.push(`Event/${this.state.custReference}`);
+        this.props.history.push(`UpdateCustID/${this.state.custReference}`);
     }}).catch(err => {
       console.error(err);
       this.setState({ errorMessage: err});
@@ -55,7 +55,7 @@ class ExistingCustomer extends Component{
 
   onBackClick = (event) => {
     event.preventDefault();
-    window.location.pathname = './';
+    window.location.pathname = './Admin';
   }
 
   render(){
@@ -74,5 +74,4 @@ class ExistingCustomer extends Component{
   }
 }
 
-export default (ExistingCustomer);
-
+export default (UpdateCust);

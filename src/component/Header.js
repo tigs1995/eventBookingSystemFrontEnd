@@ -1,11 +1,18 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-function Header() {
-    return (
-        <div>
-            <h1>BOOK AN EVENT</h1>
-        </div>
-    );
+export default class Header extends Component {
+
+    homeClicked = (event) => {
+        event.preventDefault();
+        window.location.pathname = './';
+    }
+
+    render(){
+        return (
+            <div>
+                <button onClick={this.homeClicked}>Home</button>
+                <h1>BOOK AN EVENT</h1>
+            </div>
+        );
+    }
 }
-
-export default Header;

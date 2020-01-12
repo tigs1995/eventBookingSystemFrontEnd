@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { BASE_URL, POST_EVENT_URL } from './Constants';
+import { BASE_URL, PUT_DELETE_EVENT_URL} from '../Constants';
 
-
-export default class Event extends Component{
+export default class UpdateEventID extends Component{
 
   constructor(props){
     super(props);
     this.state = {
-      custid: null,
+      eventid: null,
       eventPostcode: null,
       eventCapacity: null,
       eventDate: null,
@@ -16,8 +15,13 @@ export default class Event extends Component{
         errorPostcode: '',
         errorCapacity: '',
         errorDate: '',
+        err: '',
       },
     }
+  }
+
+  componentDidMount(props) {
+    this.setState({eventid: this.props.match.params.eventid})
   }
 
   validate = (event) => {
@@ -46,17 +50,19 @@ export default class Event extends Component{
     this.setState({ postcode: this.postcodeInp.value});
     this.setState({ capacity: this.capacityInp.value});
     this.setState({ date: this.dateInp.value});
-    axios.post(`${BASE_URL}${POST_EVENT_URL}${this.state.custid}`, { eventPostcode: this.state.eventPostcode, eventCapacity: this.state.eventCapacity, eventDate: this.state.eventDate })
+    axios.put(`${BASE_URL}${PUT_DELETE_EVENT_URL}${this.state.eventid}`, { eventPostcode: this.state.eventPostcode, eventCapacity: this.state.eventCapacity, eventDate: this.state.eventDate })
     .then(response => {console.log(response)})
     .catch(error => {
       console.warn(error);
       this.setState({ err: error.message })
     })
-    window.location.pathname = './ThankYou';
-  }
+    alert("Event updated successfully.");
+    window.location.pathname = './Admin';  
+}
 
-  componentDidMount(props) {
-    this.setState({custid: this.props.match.params.custid})
+onBackClick = (event) => {
+    event.preventDefault();
+    window.location.pathname = './UpdateCust';
   }
 
   render(){
@@ -64,7 +70,7 @@ export default class Event extends Component{
     const disabled = errors.errorPostcode || errors.errorCapacity;
     return (
       <div>
-        <p>Customer Reference: {this.state.custid}</p>
+        <p>Event Reference: {this.state.eventid}</p>
         <form onSubmit={this.onSubmitClick}>
           <input type="date" placeholder="Date" name="eventDate" value="2020-02-10" onChange={this.validate} ref={input => this.dateInp = input} required></input>
           <br />
@@ -76,8 +82,10 @@ export default class Event extends Component{
           <br />
           <p>If your event is more than one day, please select a day for your event that is available.</p>
           <button disabled={disabled ? 'disabled' : ''}>Submit</button>
+        <br />
+        <button onClick={this.onBackClick}>Back</button>    
         </form>
       </div>
-    );
+    )
     }
 }

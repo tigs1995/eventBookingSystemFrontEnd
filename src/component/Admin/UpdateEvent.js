@@ -1,36 +1,35 @@
 import React, { Component } from 'react';
 import { render } from '@testing-library/react';
 import axios from 'axios';
-import Event from './Event';
-import { BASE_URL, CHECK_EXISTING_CUST_URL } from './Constants';
+import { BASE_URL, CHECK_EXISTING_EVENT_URL } from '../Constants';
 
-class ExistingCustomer extends Component{
+class UpdateEvent extends Component{
   
   constructor(props){
     super(props);
     this.state = {
-      custReference: 0,
+      eventReference: 0,
       errorMessage: '',
       disabled: true
   }
   }
 
   validation = (event) => {
-    let custRef = event.target.value;
+    let eventRef = event.target.value;
     let err = '';
     event.preventDefault();
-    this.setState({custReference: 0});
+    this.setState({eventReference: 0});
     
-    if (custRef == ""){
+    if (eventRef == ""){
       err = '';
       this.setState({disabled: true});
     }
-    else if (!Number(custRef)){
-      err = <small>Your customer reference must be a number greater than 0.</small>
+    else if (!Number(eventRef)){
+      err = <small>Your event reference must be a number greater than 0.</small>
       this.setState({disabled: true});
     }
     else {
-      this.setState({custReference: custRef});
+      this.setState({eventReference: eventRef});
       this.setState({disabled: false});
     }
     this.setState({errorMessage: err});
@@ -38,15 +37,15 @@ class ExistingCustomer extends Component{
 
   onSubmitClick = (event) => {
     event.preventDefault();
-    axios.get(`${BASE_URL}${CHECK_EXISTING_CUST_URL}${this.state.custReference}`).then(response => {
+    axios.get(`${BASE_URL}${CHECK_EXISTING_EVENT_URL}${this.state.eventReference}`).then(response => {
       if (response.data.Error) {
         this.setState({ errorMessage: response.dataError });
       }
       else if (response.data == false) {
-        this.setState({ errorMessage: "Customer ID not found." });
+        this.setState({ errorMessage: "Event ID not found." });
       } 
       else {
-        this.props.history.push(`Event/${this.state.custReference}`);
+        this.props.history.push(`UpdateEventID/${this.state.eventReference}`);
     }}).catch(err => {
       console.error(err);
       this.setState({ errorMessage: err});
@@ -55,14 +54,14 @@ class ExistingCustomer extends Component{
 
   onBackClick = (event) => {
     event.preventDefault();
-    window.location.pathname = './';
+    window.location.pathname = './Admin';
   }
 
   render(){
     return (
       <div>
       <form>
-        <input type="long" placeholder="Customer Ref Number" name="cust-ref" onChange={this.validation} required></input>
+        <input type="long" placeholder="Event Ref Number" name="event-ref" onChange={this.validation} required></input>
         <br />
         <button disabled={this.state.disabled} onClick={this.onSubmitClick}>Submit</button>
         {this.state.errorMessage}
@@ -74,5 +73,4 @@ class ExistingCustomer extends Component{
   }
 }
 
-export default (ExistingCustomer);
-
+export default (UpdateEvent);
