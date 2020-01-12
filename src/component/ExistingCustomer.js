@@ -61,7 +61,7 @@ class ExistingCustomer extends Component{
         <br />
         <span className='error'>{this.state.errorMessage}</span> 
         <br />
-        <button id='submitButton' disabled={this.state.disabled} onClick={this.onSubmitClick}>Submit</button>
+        <button disabled={this.state.disabled} onClick={this.onSubmitClick}>Submit</button>
       </form>
       </div>
     );

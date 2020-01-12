@@ -73,19 +73,19 @@ export default class NewCustomer extends Component{
     return (
       <div>
         <form onSubmit={this.onSubmitClick}>
-          <input id='firstName' type="text" placeholder="First Name" name="firstName" onChange={this.validate} ref={input => this.firstNameInp = input} required></input>
+          <input type="text" placeholder="First Name" name="firstName" onChange={this.validate} ref={input => this.firstNameInp = input} required></input>
           <span className='error'>{errors.errorFirstName}</span>        
           <br />
-          <input id='secondName' type="text" placeholder="Second Name" name="lastName" onChange={this.validate} ref={input => this.lastNameInp = input} required></input>
+          <input type="text" placeholder="Second Name" name="lastName" onChange={this.validate} ref={input => this.lastNameInp = input} required></input>
           <span className='error'>{errors.errorLastName}</span>          
           <br />
-          <input id='email' type="text" placeholder="Email" name="email" onChange={this.validate} ref={input => this.emailInp = input} required></input>
+          <input type="text" placeholder="Email" name="email" onChange={this.validate} ref={input => this.emailInp = input} required></input>
           <span className='error'>{errors.errorEmail}</span> 
           <br />
-          <input id='phone' type="text" placeholder="Phone" name="phone" onChange={this.validate} ref={input => this.phoneInp = input} required></input>
+          <input type="text" placeholder="Phone" name="phone" onChange={this.validate} ref={input => this.phoneInp = input} required></input>
           <span className='error'>{errors.errorPhone}</span> 
           <br />
-          <button id='submitButton' disabled={disabled ? 'disabled' : ''}>Submit</button>
+          <button disabled={disabled ? 'disabled' : ''}>Submit</button>
         </form>
       </div>
     )

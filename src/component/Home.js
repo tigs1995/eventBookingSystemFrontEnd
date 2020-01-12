@@ -26,7 +26,7 @@ class Home extends Component{
         <button id="yesButton" onClick={this.yesClicked}>Yes</button>
         <button if="noButton" onClick={this.noClicked}>No</button>
         <br />
-        <button id='adminButton' className='homebutton' onClick={this.adminClicked}>Admin</button>
+        <button className='homebutton' onClick={this.adminClicked}>Admin</button>
         </form>
       </div>
     );
