@@ -74,7 +74,7 @@ export default class DeleteEvent extends Component{
         <span className='error'>{this.state.errorMessage}</span> 
         <button disabled={this.state.disabled} onClick={this.onSubmitClick}>Delete Event</button>
         <br />
-        <button onClick={this.onBackClick}>Back</button>
+        <button onClick={this.onBackClick}>Admin Home</button>
         <span className='completemessage'>{this.state.completeMessage}</span>
         </form>
       </div>

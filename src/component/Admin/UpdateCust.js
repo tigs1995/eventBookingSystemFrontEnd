@@ -68,7 +68,7 @@ class UpdateCust extends Component{
         <span className='error'>{this.state.errorMessage}</span> 
         <button disabled={this.state.disabled} onClick={this.onSubmitClick}>Submit</button>
         <br/>
-        <button onClick={this.onBackClick}>Back</button>
+        <button onClick={this.onBackClick}>Admin Home</button>
       </form>
       </div>
     );

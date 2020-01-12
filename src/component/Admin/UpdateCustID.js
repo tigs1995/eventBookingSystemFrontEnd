@@ -12,6 +12,7 @@ export default class UpdateCustID extends Component{
     lastName: null,
     email: null,
     phone: null,
+    completeMessage: '',
     errors: {
       errorFirstName: ' ',
       errorLastName: ' ',
@@ -28,6 +29,7 @@ componentDidMount(props) {
 
   validate = (event) => {
     event.preventDefault();
+    this.setState({completeMessage: ''})
     var validEmailRegex = new RegExp('^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$');
     var validPhoneRegex = /^(((\+44\s?\d{4}|\(?0\d{4}\)?)\s?\d{3}\s?\d{3})|((\+44\s?\d{3}|\(?0\d{3}\)?)\s?\d{3}\s?\d{4})|((\+44\s?\d{2}|\(?0\d{2}\)?)\s?\d{4}\s?\d{4}))(\s?\#(\d{4}|\d{3}))?$/;
     const { name, value } = event.target;
@@ -66,13 +68,12 @@ componentDidMount(props) {
         console.log(error);
         this.setState({ err: error.message })
       })
-      alert("Customer updated successfully.");
-      window.location.pathname = './Admin';
+      this.setState({completeMessage: "Customer number " + (this.state.custid) + " was updated."})
     }
 
     onBackClick = (event) => {
         event.preventDefault();
-        window.location.pathname = './UpdateCust';
+        window.location.pathname = './Admin';
       }
 
   render(){
@@ -96,7 +97,8 @@ componentDidMount(props) {
           <br />
           <button disabled={disabled ? 'disabled' : ''}>Submit</button>
           <br />
-            <button onClick={this.onBackClick}>Back</button>
+            <button onClick={this.onBackClick}>Admin Home</button>
+            <span className='completemessage'>{this.state.completeMessage}</span>
         </form>
       </div>
     )
