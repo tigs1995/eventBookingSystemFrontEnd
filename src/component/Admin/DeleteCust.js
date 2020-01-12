@@ -75,7 +75,7 @@ export default class DeleteCustomer extends Component{
         <br/>
         <button disabled={this.state.disabled} onClick={this.onSubmitClick}>Delete Customer</button>
         <br />
-        <button onClick={this.onBackClick}>Back</button>
+        <button onClick={this.onBackClick}>Admin Home</button>
         <span className='completemessage'>{this.state.completeMessage}</span>
         </form>
       </div>

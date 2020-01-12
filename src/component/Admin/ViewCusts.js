@@ -61,7 +61,7 @@ export default class ViewCusts extends Component{
                             </tbody>
                         </table>
                 </div>
-                <button className="backbutton" onClick={this.backClicked}>Back</button>
+                <button className="backbutton" onClick={this.backClicked}>Admin Home</button>
             </div>
         );
     }

@@ -39,7 +39,6 @@ export default class Event extends Component{
       case 'eventDate':
         this.setState({ todayDate: value });
         break;
-
         default:
           break;
     }
@@ -50,8 +49,8 @@ export default class Event extends Component{
 
   onSubmitClick = (event) => {
     event.preventDefault();
-    this.setState({ postcode: this.postcodeInp.value});
-    this.setState({ capacity: this.capacityInp.value});
+    this.setState({ eventPostcode: this.postcodeInp.value});
+    this.setState({ eventCapacity: this.capacityInp.value});
     this.setState({ eventDate: this.dateInp.value});
     axios.post(`${BASE_URL}${POST_EVENT_URL}${this.state.custid}`, { eventPostcode: this.state.eventPostcode, eventCapacity: this.state.eventCapacity, eventDate: this.state.eventDate })
     .then(response => {console.log(response)})

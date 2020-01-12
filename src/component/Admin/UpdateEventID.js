@@ -81,7 +81,7 @@ export default class UpdateEventID extends Component{
 
 onBackClick = (event) => {
     event.preventDefault();
-    window.location.pathname = './UpdateEvent';
+    window.location.pathname = './Admin';
   }
 
   render(){
@@ -104,7 +104,7 @@ onBackClick = (event) => {
           <br />
           <button disabled={disabled ? 'disabled' : ''}>Submit</button>
         <br />
-        <button onClick={this.onBackClick}>Back</button>    
+        <button onClick={this.onBackClick}>Admin Home</button>    
         </form>
       </div>
     )
