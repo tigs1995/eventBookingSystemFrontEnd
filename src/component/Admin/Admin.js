@@ -52,16 +52,16 @@ export default class Event extends Component{
           </thead>
           <tbody>
             <tr>
-              <td><button onClick={this.viewCusts}>View Customers</button></td>
-              <td><button onClick={this.viewEvents}>View Events</button></td>
+              <td><button id='viewCusts' onClick={this.viewCusts}>View Customers</button></td>
+              <td><button id='viewEvents' onClick={this.viewEvents}>View Events</button></td>
             </tr>
             <tr>
-              <td><button onClick={this.deleteCust}>Delete Customer</button></td>
-              <td><button onClick={this.deleteEvent}>Delete Event</button></td>
+              <td><button id='deleteCust' onClick={this.deleteCust}>Delete Customer</button></td>
+              <td><button id='deleteEvent' onClick={this.deleteEvent}>Delete Event</button></td>
             </tr>
             <tr>
-              <td><button onClick={this.updateCust}>Update Customer</button></td>
-              <td><button onClick={this.updateEvent}>Update Event</button></td>
+              <td><button id='updateCust' onClick={this.updateCust}>Update Customer</button></td>
+              <td><button id='updateEvent' onClick={this.updateEvent}>Update Event</button></td>
             </tr>
           </tbody>
         </table>
