@@ -13,6 +13,7 @@ export default class UpdateEventID extends Component{
       eventDate: null,
       todayDate: null,
       maxDate: null,
+      completeMessage: '', 
       err: '',
       errors: {
         errorPostcode: '',
@@ -24,7 +25,7 @@ export default class UpdateEventID extends Component{
   }
 
   componentDidMount(props) {
-    this.setState({custid: this.props.match.params.custid});
+    this.setState({eventid: this.props.match.params.eventid});
     var todaysDate = new Date();
     var day = todaysDate.getDate();
     var month = todaysDate.getMonth() + 1;
@@ -45,6 +46,7 @@ export default class UpdateEventID extends Component{
     var validPostcodeRegex = /^[A-Za-z]{1,2}[0-9Rr][0-9A-Za-z]? ?[0-9][AaBbD-Hd-hJjLlNnP-Up-uW-Zw-z]{2}$/;
     const { name, value } = event.target;
     let errors = this.state.errors;
+    this.setState({completeMessage: ''})
 
     switch(name){
       case 'eventPostcode':
@@ -66,17 +68,17 @@ export default class UpdateEventID extends Component{
 
   onSubmitClick = (event) => {
     event.preventDefault();
-    this.setState({ postcode: this.postcodeInp.value});
-    this.setState({ capacity: this.capacityInp.value});
-    this.setState({ date: this.dateInp.value});
+    this.setState({ eventPpostcode: this.postcodeInp.value});
+    this.setState({ eventCapacity: this.capacityInp.value});
+    this.setState({ eventDate: this.dateInp.value});
     axios.put(`${BASE_URL}${PUT_DELETE_EVENT_URL}${this.state.eventid}`, { eventPostcode: this.state.eventPostcode, eventCapacity: this.state.eventCapacity, eventDate: this.state.eventDate })
     .then(response => {console.log(response)})
     .catch(error => {
       console.warn(error);
       this.setState({ err: error.message })
     })
-    alert("Event updated successfully.");
-    window.location.pathname = './Admin';  
+    this.setState({completeMessage: "Event number " + (this.state.eventid) + " was updated."})
+  
 }
 
 onBackClick = (event) => {
@@ -105,6 +107,7 @@ onBackClick = (event) => {
           <button disabled={disabled ? 'disabled' : ''}>Submit</button>
         <br />
         <button onClick={this.onBackClick}>Admin Home</button>    
+        <span className='completemessage'>{this.state.completeMessage}</span>
         </form>
       </div>
     )
