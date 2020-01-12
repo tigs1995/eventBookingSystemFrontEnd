@@ -67,7 +67,7 @@ class UpdateEvent extends Component{
         <br />
         <button disabled={this.state.disabled} onClick={this.onSubmitClick}>Submit</button>
         <span className='error'>{this.state.errorMessage}</span> 
-        <button onClick={this.onBackClick}>Admin Home</button>
+        <button onClick={this.onBackClick}>Back</button>
       </form>
       </div>
     );

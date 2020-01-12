@@ -61,7 +61,7 @@ export default class ViewEvents extends Component{
                             </tbody>
                         </table>
                 </div>
-                <button className="backbutton" onClick={this.backClicked}>Admin Home</button>
+                <button className="backbutton" onClick={this.backClicked}>Back</button>
             </div>
         );
     }
