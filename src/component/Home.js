@@ -4,7 +4,7 @@ class Home extends Component{
 
   yesClicked = (e) => {
     e.preventDefault();
-    window.location.pathname = './ExistingCustomer';
+    this.props.history.push('./ExistingCustomer');
   }
 
   noClicked = (e) => {
