@@ -22,7 +22,7 @@ export default class DeleteCustomer extends Component{
     this.setState({custReference: 0});
     this.setState({completeMessage: ''})
     
-    if (custRef == ""){
+    if (custRef === ""){
       err = '';
       this.setState({disabled: true});
     }
@@ -43,7 +43,7 @@ export default class DeleteCustomer extends Component{
       if (response.data.Error) {
         this.setState({ errorMessage: response.dataError });
       }
-      else if (response.data == false) {
+      else if (response.data === false) {
         this.setState({ errorMessage: "Customer ID not found." });
       } 
       else {

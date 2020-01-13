@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { render } from '@testing-library/react';
 import axios from 'axios';
 import { BASE_URL, CHECK_EXISTING_EVENT_URL } from '../Constants';
 
@@ -20,7 +19,7 @@ class UpdateEvent extends Component{
     event.preventDefault();
     this.setState({eventReference: 0});
     
-    if (eventRef == ""){
+    if (eventRef === ""){
       err = '';
       this.setState({disabled: true});
     }
@@ -41,7 +40,7 @@ class UpdateEvent extends Component{
       if (response.data.Error) {
         this.setState({ errorMessage: response.dataError });
       }
-      else if (response.data == false) {
+      else if (response.data === false) {
         this.setState({ errorMessage: "Event ID not found." });
       } 
       else {

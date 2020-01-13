@@ -33,19 +33,19 @@ export default class ViewEvents extends Component{
                             <thead>
                                 <tr>
                                     <th>
-                                        <a>Date</a>
+                                        Date
                                     </th>
                                     <th>
-                                        <a>EventId</a>
+                                        EventId
                                     </th>
                                     <th>
-                                        <a>Event Capacity</a>
+                                        Event Capacity
                                     </th>
                                     <th>
-                                        <a>Event Postcode</a>
+                                        Event Postcode
                                     </th>
                                     <th>
-                                        <a>Event Customer</a>
+                                        Event Customer
                                     </th>
                                 </tr>
                             </thead>

@@ -6,7 +6,6 @@ import Event from './component/Event';
 import ExistingCust from './component/ExistingCustomer';
 import NewCustomer from './component/NewCustomer';
 import ThankYou from './component/ThankYou';
-import NoMatch from './component/NoMatch';
 import Header  from './component/Header';
 import Footer from './component/Footer';
 import Admin from './component/Admin/Admin';
@@ -44,7 +43,6 @@ class App extends Component{
             <Route path="/deleteevent" component={DeleteEvent} />
             <Route path="/viewcusts" component={ViewCusts} />
             <Route path="/viewevents" component={ViewEvents} />
-            <Route component={NoMatch} />
           </Switch>
           <Footer/>
           </div>

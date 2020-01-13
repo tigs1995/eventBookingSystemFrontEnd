@@ -22,7 +22,7 @@ export default class DeleteEvent extends Component{
     this.setState({eventReference: 0});
     this.setState({completeMessage: ''})
     
-    if (eventRef == ""){
+    if (eventRef === ""){
       err = '';
       this.setState({disabled: true});
     }
@@ -43,7 +43,7 @@ export default class DeleteEvent extends Component{
       if (response.data.Error) {
         this.setState({ errorMessage: response.dataError });
       }
-      else if (response.data == false) {
+      else if (response.data === false) {
         this.setState({ errorMessage: "Event ID not found." });
       } 
       else {

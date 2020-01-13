@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-import { render } from '@testing-library/react';
-import axios from 'axios';
-import Event from '../Event';
 
 export default class AdminPassword extends Component{
   
@@ -15,7 +12,7 @@ export default class AdminPassword extends Component{
 
   onSubmitClick = (event) => {
     event.preventDefault();
-    if (this.passwordInp.value == this.state.password){
+    if (this.passwordInp.value === this.state.password){
         window.location.pathname = './Admin';
     }
     else{

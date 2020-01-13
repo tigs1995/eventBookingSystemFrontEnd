@@ -33,19 +33,19 @@ export default class ViewCusts extends Component{
                             <thead>
                                 <tr>
                                     <th>
-                                        <a>Customer ID</a>
+                                        Customer ID
                                     </th>
                                     <th>
-                                        <a>First Name</a>
+                                        First Name
                                     </th>
                                     <th>
-                                        <a>Second Name</a>
+                                        Second Name
                                     </th>
                                     <th>
-                                        <a>Email</a>
+                                        Email
                                     </th>
                                     <th>
-                                        <a>Phone</a>
+                                        Phone
                                     </th>
                                 </tr>
                             </thead>
