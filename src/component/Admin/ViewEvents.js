@@ -18,8 +18,9 @@ export default class ViewEvents extends Component{
         .catch(error => console.warn(error));
       }
 
-      backClicked(){
-        this.props.history.push('./Admin');
+      backClicked = (event) => {
+        event.preventDefault();
+        this.props.history.push('./AdminHome');
       }
 
       render() {

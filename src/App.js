@@ -8,7 +8,7 @@ import NewCustomer from './component/NewCustomer';
 import ThankYou from './component/ThankYou';
 import Header  from './component/Header';
 import Footer from './component/Footer';
-import Admin from './component/Admin/Admin';
+import AdminHome from './component/Admin/AdminHome';
 import AdminPassword from './component/Admin/AdminPassword'
 import UpdateCust from './component/Admin/UpdateCust'
 import UpdateCustID from './component/Admin/UpdateCustID'
@@ -33,7 +33,7 @@ class App extends Component{
             <Route path="/newcustomer" component={NewCustomer} />
             <Route path="/event/:custid" component={Event} />
             <Route path="/thankyou" component={ThankYou} />
-            <Route path="/admin" component={Admin} />
+            <Route path="/adminhome" component={AdminHome} />
             <Route path="/adminpassword" component={AdminPassword} />
             <Route path="/updatecust" component={UpdateCust} />
             <Route path="/updatecustid/:custid" component={UpdateCustID} />

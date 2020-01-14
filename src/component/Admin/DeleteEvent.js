@@ -58,9 +58,9 @@ export default class DeleteEvent extends Component{
 })
   }
 
-  onBackClick = (event) => {
+  backClicked = (event) => {
     event.preventDefault();
-    this.props.history.push('./Admin');
+    this.props.history.push('./AdminHome');
   }
 
   render(){
@@ -74,7 +74,7 @@ export default class DeleteEvent extends Component{
         <span className='error'>{this.state.errorMessage}</span> 
         <button disabled={this.state.disabled} onClick={this.onSubmitClick}>Delete Event</button>
         <br />
-        <button onClick={this.onBackClick}>Admin Home</button>
+        <button onClick={this.backClicked}>Admin Home</button>
         <span className='completemessage'>{this.state.completeMessage}</span>
         </form>
       </div>

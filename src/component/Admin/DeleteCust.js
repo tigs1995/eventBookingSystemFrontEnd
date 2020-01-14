@@ -58,9 +58,9 @@ export default class DeleteCustomer extends Component{
 })
   }
 
-  onBackClick = (event) => {
+  backClicked = (event) => {
     event.preventDefault();
-    this.props.history.push('./Admin');
+    this.props.history.push('./AdminHome');
   }
 
   render(){
@@ -75,7 +75,7 @@ export default class DeleteCustomer extends Component{
         <br/>
         <button disabled={this.state.disabled} onClick={this.onSubmitClick}>Delete Customer</button>
         <br />
-        <button onClick={this.onBackClick}>Admin Home</button>
+        <button onClick={this.backClicked}>Admin Home</button>
         <span className='completemessage'>{this.state.completeMessage}</span>
         </form>
       </div>

@@ -51,10 +51,11 @@ class UpdateCust extends Component{
     })
     }
 
-  onBackClick = (event) => {
-    event.preventDefault();
-    this.props.history.push('./Admin');
-  }
+    backClicked = (event) => {
+      event.preventDefault();
+      this.props.history.push('./AdminHome');
+    }
+  
 
   render(){
     return (
@@ -67,7 +68,7 @@ class UpdateCust extends Component{
         <span className='error'>{this.state.errorMessage}</span> 
         <button disabled={this.state.disabled} onClick={this.onSubmitClick}>Submit</button>
         <br/>
-        <button onClick={this.onBackClick}>Admin Home</button>
+        <button onClick={this.backClicked}>Admin Home</button>
       </form>
       </div>
     );

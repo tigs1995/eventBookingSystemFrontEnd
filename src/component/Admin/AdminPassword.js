@@ -1,19 +1,20 @@
 import React, { Component } from 'react';
+import { PASSWORD } from '../Constants';
 
 export default class AdminPassword extends Component{
   
   constructor(props){
     super(props);
     this.state = {
-      password: "toastclub1995",
+      password: {PASSWORD},
       errorMessage: ''
   }
   }
 
   onSubmitClick = (event) => {
     event.preventDefault();
-    if (this.passwordInp.value === this.state.password){
-      this.props.history.push('./Admin');
+    if (this.passwordInp.value === PASSWORD) {
+      this.props.history.push('./AdminHome');
     }
     else{
         this.setState({errorMessage: "Password incorrect."});
