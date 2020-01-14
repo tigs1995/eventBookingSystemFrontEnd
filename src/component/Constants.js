@@ -1,4 +1,4 @@
-export const BASE_URL = 'http://localhost:8096/app';
+export const BASE_URL = 'localhost:8096/app';
 export const CHECK_EXISTING_CUST_URL = '/checkExistingCust/';
 export const CHECK_EXISTING_EVENT_URL = '/checkExistingEvent/';
 export const POST_EVENT_URL = '/event/';

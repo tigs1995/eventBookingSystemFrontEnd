@@ -19,7 +19,7 @@ export default class ViewCusts extends Component{
       }
 
       backClicked(){
-          window.location.pathname = './Admin';
+        this.props.history.push('./Admin');
       }
 
       render() {

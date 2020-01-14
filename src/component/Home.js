@@ -9,13 +9,12 @@ class Home extends Component{
 
   noClicked = (e) => {
     e.preventDefault();
-    window.location.pathname = './NewCustomer';
+    this.props.history.push('./NewCustomer');
   }
 
   adminClicked = (event) => {
     event.preventDefault();
-    
-    window.location.pathname = './AdminPassword';
+    this.props.history.push('./AdminPassword');
   }
 
   render(){
