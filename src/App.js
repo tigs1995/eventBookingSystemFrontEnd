@@ -23,10 +23,9 @@ import ViewEvents from './component/Admin/ViewEvents'
 class App extends Component{
   render() {
     return (
-        <Router>
+      <Router basename="/eventBookingSystem">
           <div>
             <Header />
-            <hr />
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/existingcustomer" component={ExistingCust} />
