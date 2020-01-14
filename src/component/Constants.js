@@ -1,4 +1,4 @@
-export const BASE_URL = '/app';
+export const BASE_URL = '/eventBookingSystem/app';
 export const CHECK_EXISTING_CUST_URL = '/checkExistingCust/';
 export const CHECK_EXISTING_EVENT_URL = '/checkExistingEvent/';
 export const POST_EVENT_URL = '/event/';
