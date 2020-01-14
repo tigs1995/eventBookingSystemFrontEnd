@@ -60,7 +60,7 @@ export default class DeleteEvent extends Component{
 
   onBackClick = (event) => {
     event.preventDefault();
-    window.location.pathname = './Admin';
+    this.props.history.push('./Admin');
   }
 
   render(){

@@ -19,7 +19,7 @@ export default class ViewEvents extends Component{
       }
 
       backClicked(){
-          window.location.pathname = './Admin';
+        this.props.history.push('./Admin');
       }
 
       render() {

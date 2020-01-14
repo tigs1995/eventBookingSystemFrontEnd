@@ -13,7 +13,7 @@ export default class AdminPassword extends Component{
   onSubmitClick = (event) => {
     event.preventDefault();
     if (this.passwordInp.value === this.state.password){
-        window.location.pathname = './Admin';
+      this.props.history.push('./Admin');
     }
     else{
         this.setState({errorMessage: "Password incorrect."});
