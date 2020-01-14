@@ -14,7 +14,6 @@ class Home extends Component{
 
   adminClicked = (event) => {
     event.preventDefault();
-    
     this.props.history.push('./AdminPassword');
   }
 
