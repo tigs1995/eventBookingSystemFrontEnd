@@ -58,7 +58,7 @@ export default class Event extends Component{
       console.warn(error);
       this.setState({ err: error.message })
     })
-    this.props.history.push('ThankYou/');
+    this.props.history.replace('http://35.176.230.34:8181/eventBookingSystem/ThankYou');
   }
 
   componentDidMount(props) {
