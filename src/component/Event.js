@@ -34,7 +34,7 @@ export default class Event extends Component{
         errors.errorPostcode = validPostcodeRegex.test(value) || value === "" ? '' : 'Postcode invalid.';
         break;
       case 'eventCapacity':
-        errors.errorCapacity = Number(value) && value > 1 && value < 5001 ? '' : 'Invalid format. Numbers only. Max capacity of 5,000.';
+        errors.errorCapacity = Number(value) && value > 1 && value < 5001 ? '' : 'Invalid format. Numbers only. Max capacity of 5,000. ';
         break;
       case 'eventDate':
         this.setState({ todayDate: value });
