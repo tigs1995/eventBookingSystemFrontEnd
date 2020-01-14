@@ -71,10 +71,10 @@ componentDidMount(props) {
       this.setState({completeMessage: "Customer number " + (this.state.custid) + " was updated."})
     }
 
-    onBackClick = (event) => {
-        event.preventDefault();
-        this.props.history.push('./Admin');
-      }
+    backClicked = (event) => {
+      event.preventDefault();
+      this.props.history.push('./AdminHome');
+    }
 
   render(){
     const {errors} = this.state;
@@ -97,7 +97,7 @@ componentDidMount(props) {
           <br />
           <button disabled={disabled ? 'disabled' : ''}>Submit</button>
           <br />
-            <button onClick={this.onBackClick}>Admin Home</button>
+            <button onClick={this.backClicked}>Admin Home</button>
             <span className='completemessage'>{this.state.completeMessage}</span>
         </form>
       </div>
