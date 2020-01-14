@@ -41,7 +41,7 @@ export default class NewCustomer extends Component{
         errors.errorEmail = validEmailRegex.test(value) || value === "" ? '' : 'Email invalid.';
         break;
       case 'phone':
-        errors.errorPhone = validPhoneRegex.test(value) || value === "" ? '' : 'Phone invalid.';
+        errors.errorPhone = validPhoneRegex.test(value) || value === "" ? '' : 'Phone invalid. ';
         break;
         default:
           break;
