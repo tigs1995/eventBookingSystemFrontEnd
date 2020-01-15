@@ -4,7 +4,7 @@ export default class Header extends Component {
 
 
     homeClicked = (event) => {
-        window.location.replace('http://35.176.230.34:8181/eventBookingSystem/');
+        window.location.pathname = './';
     }
     render(){
         return (
