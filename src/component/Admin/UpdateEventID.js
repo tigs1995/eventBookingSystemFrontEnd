@@ -83,7 +83,7 @@ export default class UpdateEventID extends Component{
 
 backClicked = (event) => {
   event.preventDefault();
-  this.props.history.push('./AdminHome');
+  this.props.history.push('../AdminHome');
 }
 
   render(){
