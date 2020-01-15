@@ -4,7 +4,7 @@ export default class Header extends Component {
 
     homeClicked = (event) => {
         event.preventDefault();
-        window.location.pathname = './';
+        this.props.history.push('./');
     }
 
     render(){
