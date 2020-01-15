@@ -4,7 +4,7 @@ export default class Header extends Component {
 
 
     homeClicked = (event) => {
-        window.location.pathname = './';
+        window.location.pathname = '.';
     }
     render(){
         return (
