@@ -11,7 +11,7 @@ export default class Header extends Component {
         return (
             <div>
                 <button className='homebutton' onClick={this.homeClicked}>Home</button>
-                <h1>BOOK AN EVENT</h1>
+                <h1 href="/">BOOK AN EVENT</h1>
             </div>
         );
     }
