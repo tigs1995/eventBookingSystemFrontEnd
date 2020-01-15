@@ -73,7 +73,7 @@ componentDidMount(props) {
 
     backClicked = (event) => {
       event.preventDefault();
-      this.props.history.push('./AdminHome');
+      this.props.history.push('../AdminHome');
     }
 
   render(){
