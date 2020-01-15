@@ -4,7 +4,7 @@ export default class Header extends Component {
 
 
     homeClicked = (event) => {
-        this.props.history.push('./');
+        window.location.replace('http://35.176.230.34:8181/eventBookingSystem/');
     }
     render(){
         return (
