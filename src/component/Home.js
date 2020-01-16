@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 
-class Home extends Component{
+export default class Home extends Component{
 
-  yesClicked = (e) => {
-    e.preventDefault();
+  yesClicked = (event) => {
+    event.preventDefault();
     this.props.history.push('./ExistingCustomer');
   }
 
-  noClicked = (e) => {
-    e.preventDefault();
+  noClicked = (event) => {
+    event.preventDefault();
     this.props.history.push('./NewCustomer');
   }
 
@@ -25,11 +25,10 @@ class Home extends Component{
         <button type='yes' onClick={this.yesClicked}>Yes</button>
         <button onClick={this.noClicked}>No</button>
         <br />
-        <button className='homebutton' onClick={this.adminClicked}>Admin</button>
+        <button className='homeButton' onClick={this.adminClicked}>Admin</button>
         </form>
       </div>
     );
   }
 }
-export default (Home);
 
