@@ -3,6 +3,8 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). Scroll to the bottom for instructions on how to run React apps.
 
+Please view the back end repository to see more information on the architecture and deployment. 
+
 ## **Contents:**
 * Technologies used
 * Testing
