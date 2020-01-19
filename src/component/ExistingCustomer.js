@@ -26,7 +26,7 @@ class ExistingCustomer extends Component{
       this.setState({disabled: true});
     }
     else if (!Number(custRef)){
-      err = <small>Your customer reference must be a number greater than 0.</small>
+      err = "Your customer reference must be a number greater than 0.";
       this.setState({disabled: true});
     }
     else {
@@ -53,21 +53,15 @@ class ExistingCustomer extends Component{
     })
     }
 
-  onBackClick = (event) => {
-    event.preventDefault();
-    window.location.pathname = './';
-  }
-
   render(){
     return (
       <div>
       <form>
         <input type="long" placeholder="Customer Ref Number" name="cust-ref" onChange={this.validation} required></input>
         <br />
-        <button disabled={this.state.disabled} onClick={this.onSubmitClick}>Submit</button>
-        {this.state.errorMessage}
+        <span className='error'>{this.state.errorMessage}</span> 
         <br />
-        <button onClick={this.onBackClick}>Back</button>
+        <button disabled={this.state.disabled} onClick={this.onSubmitClick}>Submit</button>
       </form>
       </div>
     );

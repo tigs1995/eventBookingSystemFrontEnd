@@ -20,13 +20,14 @@ export default class DeleteCustomer extends Component{
     let err = '';
     event.preventDefault();
     this.setState({custReference: 0});
+    this.setState({completeMessage: ''})
     
     if (custRef == ""){
       err = '';
       this.setState({disabled: true});
     }
     else if (!Number(custRef)){
-      err = <small>Your customer reference must be a number greater than 0.</small>
+      err = "Your customer reference must be a number greater than 0.";
       this.setState({disabled: true});
     }
     else {
@@ -57,14 +58,26 @@ export default class DeleteCustomer extends Component{
 })
   }
 
+  onBackClick = (event) => {
+    event.preventDefault();
+    window.location.pathname = './Admin';
+  }
+
   render(){
     return (
       <div>
-        <h2>ADMIN VIEW</h2>
-        <input type="long" placeholder="Enter customer number to delete." name="custToDelete" onChange={this.validation} required></input>
+        <h3 className="admin">ADMIN VIEW</h3>
+        <br/>
+        <form>
+        <input type="long" placeholder="Customer number to delete" name="custToDelete" onChange={this.validation} required></input>
+        <br/>
+        <span className='error'>{this.state.errorMessage}</span> 
+        <br/>
         <button disabled={this.state.disabled} onClick={this.onSubmitClick}>Delete Customer</button>
-        {this.state.errorMessage}
         <br />
+        <button onClick={this.onBackClick}>Admin Home</button>
+        <span className='completemessage'>{this.state.completeMessage}</span>
+        </form>
       </div>
     )
     }

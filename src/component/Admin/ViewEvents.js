@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { BASE_URL, GET_EVENT_URL } from '../Constants';
-import { Card } from 'react-bootstrap';
 
 export default class ViewEvents extends Component{
 
@@ -19,16 +18,21 @@ export default class ViewEvents extends Component{
         .catch(error => console.warn(error));
       }
 
+      backClicked(){
+          window.location.pathname = './Admin';
+      }
+
       render() {
         return (
-          <div><h2>ADMIN VIEW</h2>
-          <h3>Events</h3>
+          <div>
+            <h3 className="admin">ADMIN VIEW</h3>
+            <br/>
+            <h3>Events</h3>
             <div className='scrollbox'>
-                    <div>
                         <table>
                             <thead>
                                 <tr>
-                                    <th class='sortbydate' onClick={this.sortByDate}>
+                                    <th>
                                         <a>Date</a>
                                     </th>
                                     <th>
@@ -56,8 +60,8 @@ export default class ViewEvents extends Component{
                                 </tr>))}
                             </tbody>
                         </table>
-                    </div>
-            </div>
+                </div>
+                <button className="backbutton" onClick={this.backClicked}>Admin Home</button>
             </div>
         );
     }

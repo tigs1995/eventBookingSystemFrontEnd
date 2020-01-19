@@ -5,6 +5,8 @@ body{
   margin-top: 50px;
   margin: 80px;
   background-color: #FCC12D;
+  margin: auto;
+  margin-bottom: 20px;
 }
 
 h1{
@@ -13,12 +15,25 @@ h1{
   font-size: 100px;
   text-align: center;
   color: white;
-  margin-top: 100px;
+  margin-top: 0px;
   letter-spacing: 10px;
 }
 
+h2{
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 30px;
+  text-align: center;
+  font-weight: bold;
+  margin: 70px;
+}
+
 h3{
-  display: inline-block;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 30px;
+  text-align: center;
+  font-weight: bold;
 }
 
 p{
@@ -27,10 +42,12 @@ p{
   font-size: 20px;
   text-align: center;
   font-weight: bold;
+  margin: 20px;
+  margin-bottom: 10px;
 }
 
 input{
-  width: 50%;
+  width: 375px;
   padding: 15px;
   display: inline-block;
   border-radius: 50px;
@@ -38,29 +55,48 @@ input{
   height: 50px;
 }
 
+table{
+  text-align:center; 
+  margin-left:auto; 
+  margin-right:auto; 
+}
+
+th, td{
+  padding: 15px;
+}
+
 .error{
   color: red;
+  margin-bottom: 0;
 }
+
+.admin{
+  border-bottom: solid;
+  border-top: solid;
+}
+
+::-webkit-datetime-edit { color: #FCC12D; }
+::-webkit-calendar-picker-indicator { background: #FCC12D; }
 
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   color: #FCC12D;
   font-family: 'Montserrat', sans-serif;
-  font-style: bold;
+  font-weight: bolder;
 }
 ::-moz-placeholder { /* Firefox 19+ */
   color: #FCC12D;
   font-family: 'Montserrat', sans-serif;
-  font-style: bold;
+  font-style: bolder;
 }
 :-ms-input-placeholder { /* IE 10+ */
   color: #FCC12D;
   font-family: 'Montserrat', sans-serif;
-  font-style: bold;
+  font-style: bolder;
 }
 :-moz-placeholder { /* Firefox 18- */
   color: #FCC12D;
   font-family: 'Montserrat', sans-serif;
-  font-style: bold;
+  font-style: bolder;
 }
 
 button {
@@ -68,17 +104,19 @@ button {
   color: white;
   font-family: 'Montserrat', sans-serif;
   font-size: 20px;
+  font-weight: bolder;
   border: none;
   cursor: pointer;
-  width: 50%;
+  width: 350px;
   border-radius: 50px;
   height: 50px;
-  display: inline-block;
-  margin: 20px 0px 0px 0px;
+  margin: 10px 0px 10px 0px;
 }
 
 small{
-  color: red;
+  color: white;
+  font-size: 15px;
+  font-weight: bolder;
 }
 
 .social-media{
@@ -89,7 +127,6 @@ small{
 .logo{
   text-align: center;
 }
-
 
 form{
   display: inline-block;
@@ -102,10 +139,19 @@ span{
   display: block;
 }
 
+.homebutton{
+  background: transparent;
+  border-style: solid;
+  width: 100px;
+  margin-bottom: 0;
+  margin-top: 0;
+  font-weight: bolder;
+}
+
 .scrollbox{
   overflow-y: scroll;
   height: 500px;
-  width: 50%;
+  width: 700px;
   padding: 1rem;
   margin: 0 auto;
   border-color: white;
@@ -121,6 +167,12 @@ span{
   border-top: transparent;
   border-left: transparent;
   border-right: transparent;
+}
+
+.backbutton{
+  margin-left:auto;
+  margin-right:auto;
+  display:block;
 }
 
 

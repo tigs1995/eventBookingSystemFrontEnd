@@ -3,7 +3,7 @@ import axios from 'axios';
 import { BASE_URL, CHECK_EXISTING_EVENT_URL, PUT_DELETE_EVENT_URL } from '../Constants';
 
 
-export default class DeleteCustomer extends Component{
+export default class DeleteEvent extends Component{
 
     constructor(props){
         super(props);
@@ -20,13 +20,14 @@ export default class DeleteCustomer extends Component{
     let err = '';
     event.preventDefault();
     this.setState({eventReference: 0});
+    this.setState({completeMessage: ''})
     
     if (eventRef == ""){
       err = '';
       this.setState({disabled: true});
     }
     else if (!Number(eventRef)){
-      err = <small>Your event reference must be a number greater than 0.</small>
+      err = "Your event reference must be a number greater than 0.";
       this.setState({disabled: true});
     }
     else {
@@ -57,14 +58,25 @@ export default class DeleteCustomer extends Component{
 })
   }
 
+  onBackClick = (event) => {
+    event.preventDefault();
+    window.location.pathname = './Admin';
+  }
+
   render(){
     return (
       <div>
-        <h2>ADMIN VIEW</h2>
+        <h3 className="admin">ADMIN VIEW</h3>
+        <br/>
+        <form>
         <input type="long" placeholder="Enter event number to delete." name="eventToDelete" onChange={this.validation} required></input>
-        <button disabled={this.state.disabled} onClick={this.onSubmitClick}>Delete Event</button>
-        {this.state.errorMessage}
         <br />
+        <span className='error'>{this.state.errorMessage}</span> 
+        <button disabled={this.state.disabled} onClick={this.onSubmitClick}>Delete Event</button>
+        <br />
+        <button onClick={this.onBackClick}>Admin Home</button>
+        <span className='completemessage'>{this.state.completeMessage}</span>
+        </form>
       </div>
     )
     }

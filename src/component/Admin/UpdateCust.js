@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { render } from '@testing-library/react';
 import axios from 'axios';
-import UpdateCustID from './UpdateCustID';
 import { BASE_URL, CHECK_EXISTING_CUST_URL } from '../Constants';
 
 class UpdateCust extends Component{
@@ -26,7 +25,7 @@ class UpdateCust extends Component{
       this.setState({disabled: true});
     }
     else if (!Number(custRef)){
-      err = <small>Your customer reference must be a number greater than 0.</small>
+      err = "Your customer reference must be a number greater than 0.";
       this.setState({disabled: true});
     }
     else {
@@ -61,13 +60,15 @@ class UpdateCust extends Component{
   render(){
     return (
       <div>
+        <h3 className="admin">ADMIN VIEW</h3>
+        <br/>
       <form>
         <input type="long" placeholder="Customer Ref Number" name="cust-ref" onChange={this.validation} required></input>
         <br />
+        <span className='error'>{this.state.errorMessage}</span> 
         <button disabled={this.state.disabled} onClick={this.onSubmitClick}>Submit</button>
-        {this.state.errorMessage}
-        <br />
-        <button onClick={this.onBackClick}>Back</button>
+        <br/>
+        <button onClick={this.onBackClick}>Admin Home</button>
       </form>
       </div>
     );
