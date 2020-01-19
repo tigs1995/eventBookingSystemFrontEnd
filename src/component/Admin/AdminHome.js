@@ -1,37 +1,36 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 
 export default class Event extends Component{
 
   viewCusts = (event) => {
     event.preventDefault();
-    window.location.pathname = './ViewCusts';
+    this.props.history.push('./ViewCusts');
   }
 
   viewEvents = (event) => {
     event.preventDefault();
-    window.location.pathname = './ViewEvents';
+    this.props.history.push('./ViewEvents');
   }
   
   updateCust = (event) => {
     event.preventDefault();
-    window.location.pathname = './UpdateCust';
+    this.props.history.push('./UpdateCust');
   }
 
   updateEvent = (event) => {
     event.preventDefault();
-    window.location.pathname = './UpdateEvent';
+    this.props.history.push('./UpdateEvent');
   }
 
 
   deleteCust = (event) => {
     event.preventDefault();
-    window.location.pathname = './DeleteCust';
+    this.props.history.push('./DeleteCust');
   }
 
   deleteEvent = (event) => {
     event.preventDefault();
-    window.location.pathname = './DeleteEvent';
+    this.props.history.push('./DeleteEvent');
   }
 
   render(){

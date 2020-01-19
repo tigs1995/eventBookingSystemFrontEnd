@@ -26,7 +26,7 @@ export default class NewCustomer extends Component{
   validate = (event) => {
     event.preventDefault();
     var validEmailRegex = new RegExp('^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$');
-    var validPhoneRegex = /^(((\+44\s?\d{4}|\(?0\d{4}\)?)\s?\d{3}\s?\d{3})|((\+44\s?\d{3}|\(?0\d{3}\)?)\s?\d{3}\s?\d{4})|((\+44\s?\d{2}|\(?0\d{2}\)?)\s?\d{4}\s?\d{4}))(\s?\#(\d{4}|\d{3}))?$/;
+    var validPhoneRegex = new RegExp('^(((\\+44\\s?\\d{4}|\\(?0\\d{4}\\)?)\\s?\\d{3}\\s?\\d{3})|((\\+44\\s?\\d{3}|\\(?0\\d{3}\\)?)\\s?\\d{3}\\s?\\d{4})|((\\+44\\s?\\d{2}|\\(?0\\d{2}\\)?)\\s?\\d{4}\\s?\\d{4}))(\\s?\\#(\\d{4}|\\d{3}))?$');
     const { name, value } = event.target;
     let errors = this.state.errors;
 
@@ -38,10 +38,10 @@ export default class NewCustomer extends Component{
         errors.errorLastName = value.length < 40  ? '' : 'Last name too long.';
         break;
       case 'email':
-        errors.errorEmail = validEmailRegex.test(value) || value == "" ? '' : 'Email invalid.';
+        errors.errorEmail = validEmailRegex.test(value) || value === "" ? '' : 'Email invalid.';
         break;
       case 'phone':
-        errors.errorPhone = validPhoneRegex.test(value) || value == "" ? '' : 'Phone invalid.';
+        errors.errorPhone = validPhoneRegex.test(value) || value === "" ? '' : 'Phone invalid. ';
         break;
         default:
           break;

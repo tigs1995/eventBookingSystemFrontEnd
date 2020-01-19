@@ -1,22 +1,20 @@
 import React, { Component } from 'react';
-import { render } from '@testing-library/react';
 
 class Home extends Component{
 
   yesClicked = (e) => {
     e.preventDefault();
-    window.location.pathname = './ExistingCustomer';
+    this.props.history.push('./ExistingCustomer');
   }
 
   noClicked = (e) => {
     e.preventDefault();
-    window.location.pathname = './NewCustomer';
+    this.props.history.push('./NewCustomer');
   }
 
   adminClicked = (event) => {
     event.preventDefault();
-    
-    window.location.pathname = './AdminPassword';
+    this.props.history.push('./AdminPassword');
   }
 
   render(){

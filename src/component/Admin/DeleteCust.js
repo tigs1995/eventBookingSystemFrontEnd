@@ -22,7 +22,7 @@ export default class DeleteCustomer extends Component{
     this.setState({custReference: 0});
     this.setState({completeMessage: ''})
     
-    if (custRef == ""){
+    if (custRef === ""){
       err = '';
       this.setState({disabled: true});
     }
@@ -43,7 +43,7 @@ export default class DeleteCustomer extends Component{
       if (response.data.Error) {
         this.setState({ errorMessage: response.dataError });
       }
-      else if (response.data == false) {
+      else if (response.data === false) {
         this.setState({ errorMessage: "Customer ID not found." });
       } 
       else {
@@ -58,9 +58,9 @@ export default class DeleteCustomer extends Component{
 })
   }
 
-  onBackClick = (event) => {
+  backClicked = (event) => {
     event.preventDefault();
-    window.location.pathname = './Admin';
+    this.props.history.push('./AdminHome');
   }
 
   render(){
@@ -75,7 +75,7 @@ export default class DeleteCustomer extends Component{
         <br/>
         <button disabled={this.state.disabled} onClick={this.onSubmitClick}>Delete Customer</button>
         <br />
-        <button onClick={this.onBackClick}>Admin Home</button>
+        <button onClick={this.backClicked}>Admin Home</button>
         <span className='completemessage'>{this.state.completeMessage}</span>
         </form>
       </div>

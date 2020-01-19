@@ -1,8 +1,8 @@
 {
   "name": "eventbookingsystem",
   "version": "0.1.0",
+  "homepage": "http://localhost:8181/eventBookingSystem/",  
   "private": true,
-  "homepage": "http://tigs1995.github.io/eventBookingSystemFrontEnd",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.0",

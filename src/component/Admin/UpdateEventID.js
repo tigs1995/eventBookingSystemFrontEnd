@@ -50,10 +50,10 @@ export default class UpdateEventID extends Component{
 
     switch(name){
       case 'eventPostcode':
-        errors.errorPostcode = validPostcodeRegex.test(value) || value == "" ? '' : 'Postcode invalid.';
+        errors.errorPostcode = validPostcodeRegex.test(value) || value === "" ? '' : 'Postcode invalid.';
         break;
       case 'eventCapacity':
-        errors.errorCapacity = Number(value) && value > 1 && value < 5001 || value == "" ? '' : 'Invalid format. Numbers only. Max capacity of 5,000.';
+        errors.errorCapacity = Number(value) && value > 1 && value < 5001 ? '' : 'Invalid format. Numbers only. Max capacity of 5,000.';
         break;
       case 'eventDate':
         this.setState({ todayDate: value });
@@ -81,10 +81,10 @@ export default class UpdateEventID extends Component{
   
 }
 
-onBackClick = (event) => {
-    event.preventDefault();
-    window.location.pathname = './Admin';
-  }
+backClicked = (event) => {
+  event.preventDefault();
+  this.props.history.push('../AdminHome');
+}
 
   render(){
     const {errors} = this.state;
@@ -106,7 +106,7 @@ onBackClick = (event) => {
           <br />
           <button disabled={disabled ? 'disabled' : ''}>Submit</button>
         <br />
-        <button onClick={this.onBackClick}>Admin Home</button>    
+        <button onClick={this.backClicked}>Admin Home</button>    
         <span className='completemessage'>{this.state.completeMessage}</span>
         </form>
       </div>

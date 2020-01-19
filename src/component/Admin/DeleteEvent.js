@@ -22,7 +22,7 @@ export default class DeleteEvent extends Component{
     this.setState({eventReference: 0});
     this.setState({completeMessage: ''})
     
-    if (eventRef == ""){
+    if (eventRef === ""){
       err = '';
       this.setState({disabled: true});
     }
@@ -43,7 +43,7 @@ export default class DeleteEvent extends Component{
       if (response.data.Error) {
         this.setState({ errorMessage: response.dataError });
       }
-      else if (response.data == false) {
+      else if (response.data === false) {
         this.setState({ errorMessage: "Event ID not found." });
       } 
       else {
@@ -58,9 +58,9 @@ export default class DeleteEvent extends Component{
 })
   }
 
-  onBackClick = (event) => {
+  backClicked = (event) => {
     event.preventDefault();
-    window.location.pathname = './Admin';
+    this.props.history.push('./AdminHome');
   }
 
   render(){
@@ -74,7 +74,7 @@ export default class DeleteEvent extends Component{
         <span className='error'>{this.state.errorMessage}</span> 
         <button disabled={this.state.disabled} onClick={this.onSubmitClick}>Delete Event</button>
         <br />
-        <button onClick={this.onBackClick}>Admin Home</button>
+        <button onClick={this.backClicked}>Admin Home</button>
         <span className='completemessage'>{this.state.completeMessage}</span>
         </form>
       </div>

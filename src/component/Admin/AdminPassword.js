@@ -1,22 +1,20 @@
 import React, { Component } from 'react';
-import { render } from '@testing-library/react';
-import axios from 'axios';
-import Event from '../Event';
+import { PASSWORD } from '../Constants';
 
 export default class AdminPassword extends Component{
   
   constructor(props){
     super(props);
     this.state = {
-      password: "toastclub1995",
+      password: {PASSWORD},
       errorMessage: ''
   }
   }
 
   onSubmitClick = (event) => {
     event.preventDefault();
-    if (this.passwordInp.value == this.state.password){
-        window.location.pathname = './Admin';
+    if (this.passwordInp.value === PASSWORD) {
+      this.props.history.push('./AdminHome');
     }
     else{
         this.setState({errorMessage: "Password incorrect."});

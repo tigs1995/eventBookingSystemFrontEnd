@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { render } from '@testing-library/react';
 import axios from 'axios';
 import { BASE_URL, CHECK_EXISTING_CUST_URL } from '../Constants';
 
@@ -20,7 +19,7 @@ class UpdateCust extends Component{
     event.preventDefault();
     this.setState({custReference: 0});
     
-    if (custRef == ""){
+    if (custRef === ""){
       err = '';
       this.setState({disabled: true});
     }
@@ -41,7 +40,7 @@ class UpdateCust extends Component{
       if (response.data.Error) {
         this.setState({ errorMessage: response.dataError });
       }
-      else if (response.data == false) {
+      else if (response.data === false) {
         this.setState({ errorMessage: "Customer ID not found." });
       } 
       else {
@@ -52,10 +51,11 @@ class UpdateCust extends Component{
     })
     }
 
-  onBackClick = (event) => {
-    event.preventDefault();
-    window.location.pathname = './Admin';
-  }
+    backClicked = (event) => {
+      event.preventDefault();
+      this.props.history.push('./AdminHome');
+    }
+  
 
   render(){
     return (
@@ -68,7 +68,7 @@ class UpdateCust extends Component{
         <span className='error'>{this.state.errorMessage}</span> 
         <button disabled={this.state.disabled} onClick={this.onSubmitClick}>Submit</button>
         <br/>
-        <button onClick={this.onBackClick}>Admin Home</button>
+        <button onClick={this.backClicked}>Admin Home</button>
       </form>
       </div>
     );
