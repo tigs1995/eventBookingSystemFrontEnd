@@ -1,7 +1,7 @@
 {
   "name": "eventbookingsystem",
   "version": "0.1.0",
-  "homepage": "http://localhost:80",  
+  "homepage": "http://localhost:8181/eventBookingSystem/",  
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
