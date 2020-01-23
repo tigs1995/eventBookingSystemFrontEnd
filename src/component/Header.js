@@ -4,7 +4,7 @@ export default class Header extends Component {
 
 
     homeClicked = (event) => {
-        window.location.pathname = './eventBookingSystem';
+        this.props.history.push('../');
     }
     render(){
         return (
