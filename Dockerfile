@@ -10,7 +10,6 @@ COPY ./ /eventBookingSystemFrontEnd
 
 RUN npm run build 
 
-
 FROM nginx
 
 COPY ./build /var/www
