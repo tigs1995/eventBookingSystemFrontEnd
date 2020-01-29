@@ -1,4 +1,4 @@
-export const BASE_URL = 'http://35.176.230.34:1800/eventBookingSystem/app';
+export const BASE_URL = 'http://35.177.45.114:1800/eventBookingSystem/app';
 export const CHECK_EXISTING_CUST_URL = '/checkExistingCust/';
 export const CHECK_EXISTING_EVENT_URL = '/checkExistingEvent/';
 export const POST_EVENT_URL = '/event/';
